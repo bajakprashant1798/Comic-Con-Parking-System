@@ -3,7 +3,8 @@
 This project contains an ER diagram for a multi-zone parking system used during a large event like Comic-Con.
 
 ## ER Diagram Image:
-<img width="1600" height="1048" alt="Comic-Con-Parking-System_dark" src="https://github.com/user-attachments/assets/dbe94003-c700-420e-a53a-86abd1f3ff64" />
+<img width="1600" height="1154" alt="Comic-Con-Parking-System_dark" src="https://github.com/user-attachments/assets/7a13eac0-65e9-4bea-b810-349c19455375" />
+
 
 It supports:
 	•	Managing different types of vehicles (bike, car, SUV, EV)
