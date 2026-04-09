@@ -1,0 +1,65 @@
+title Comic-Con Parking System
+vehicles [ ] {
+  id serial pk
+  vehicle_type_id serial fk
+  name string unique
+  number string
+  created_at timestamp
+  updated_at timestamp
+}
+vehicle_types [ color: orange ] {
+  id serial pk
+  type string // bikes, cars, SUVs, cabs and EV vehicles
+}
+parking_spots [ color: yellow ] {
+  id serial pk
+  zone_id serial fk
+  spot_category_id serial fk
+  is_available boolean
+  created_at timestamp
+  updated_at timestamp
+}
+spot_categories [ color: green ] {
+  id serial pk
+  name string
+  description text
+  pricing_type string
+}
+zones [ color: blue ] {
+  id serial pk
+  name string
+  level int
+}
+parking_sessions [ color: green ] {
+  id serial pk
+  vehicle_id serial fk
+  parking_spot_id serial fk
+  entry_time timestamp
+  exit_time timestamp
+  status string // active, completed
+}
+tickets [ color: purple ] {
+  id serial pk
+  parking_session_id serial fk unique
+  issued_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+payments [ color: orange ] {
+  id serial pk
+  parking_session_id serial fk unique
+  amount decimal
+  status string
+  created_at timestamp
+  updated_at timestamp
+}
+
+vehicles.vehicle_type_id > vehicle_types.id
+
+parking_spots.zone_id > zones.id
+parking_spots.spot_category_id > spot_categories.id
+parking_sessions.vehicle_id > vehicles.id
+parking_sessions.parking_spot_id > parking_spots.id
+
+payments.parking_session_id - parking_sessions.id
+tickets.parking_session_id - parking_sessions.id
